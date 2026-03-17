@@ -1,0 +1,32 @@
+spring.application.name=jwt
+server.servlet.context-path=/api/v1/manage-store-fruit
+
+# PostgreSQL Datasource Configuration
+spring.datasource.url=jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:manage-store-fruit}
+spring.datasource.username=${DB_USERNAME:postgres}
+spring.datasource.password=${DB_PASSWORD:password_here}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA/Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.show-sql=true
+
+# Security JWT
+# Secret key should be at least 256 bits (64 characters)
+application.security.jwt.secret-key=${JWT_SECRET_KEY:generate_a_very_long_random_string_here}
+application.security.jwt.expiration=86400000
+
+# Cloudinary Configuration
+cloudinary.cloud_name=${CLOUDINARY_CLOUD_NAME:your_cloud_name}
+cloudinary.api_key=${CLOUDINARY_API_KEY:your_api_key}
+cloudinary.api_secret=${CLOUDINARY_API_SECRET:your_api_secret}
+
+# Redis Configuration
+spring.data.redis.host=${REDIS_HOST:localhost}
+spring.data.redis.port=${REDIS_PORT:6379}
+spring.cache.redis.time-to-live=600000
+
+# Enable 1-indexed pagination (default is 0-indexed)
+spring.data.web.pageable.one-indexed-parameters=true
