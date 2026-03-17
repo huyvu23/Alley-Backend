@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.alley.alley.auth.dto.AuthResponse;
 import com.alley.alley.auth.dto.LoginRequest;
 import com.alley.alley.auth.dto.RegisterRequest;
-import com.alley.alley.auth.security.JwtService;
+import com.alley.alley.security.JwtService;
 import com.alley.alley.user.entity.User;
 import com.alley.alley.user.repository.UserRepository;
 
