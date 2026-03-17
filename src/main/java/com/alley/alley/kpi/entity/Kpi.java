@@ -1,0 +1,51 @@
+package com.alley.alley.kpi.entity;
+
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+
+import org.hibernate.annotations.UuidGenerator;
+
+import com.alley.alley.tasks.entity.Task;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "kpis")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Kpi {
+    @Id
+    @GeneratedValue // Hibernate sẽ tự hiểu khi dùng với @UuidGenerator
+    @UuidGenerator // Tự động tạo UUID phía Java trước khi insert
+    @Column(name = "id", updatable = false, nullable = false)
+    private String id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "price", precision = 19, scale = 4)
+    private BigDecimal price;
+
+    @Builder.Default
+    @Column(name = "description")
+    private String description = "";
+
+    @OneToOne(mappedBy = "kpi")
+    private Task task;
+
+    @Builder.Default
+    @Column(name = "created_at", nullable = false)
+    private OffsetDateTime createdAt = OffsetDateTime.now();
+
+}

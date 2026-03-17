@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.alley.alley.bankaccount.entity.BankAccount;
+import com.alley.alley.tasks.entity.Task;
 import com.alley.alley.user.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -59,6 +60,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role = Role.STAFF;
+
+    @OneToMany(mappedBy = "assignee")
+    private List<Task> tasks;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
