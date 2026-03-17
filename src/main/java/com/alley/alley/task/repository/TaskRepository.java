@@ -1,8 +1,9 @@
-package com.alley.alley.tasks.repository;
+package com.alley.alley.task.repository;
 
-import com.alley.alley.tasks.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.alley.alley.task.entity.Task;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, String> {

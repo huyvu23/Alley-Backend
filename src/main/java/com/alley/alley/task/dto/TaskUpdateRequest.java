@@ -1,7 +1,4 @@
-package com.alley.alley.tasks.dto;
-
-import com.alley.alley.tasks.enums.Priortity;
-import com.alley.alley.tasks.enums.Status;
+package com.alley.alley.task.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+
+import com.alley.alley.task.enums.Priortity;
+import com.alley.alley.task.enums.Status;
 
 @Data
 @Builder

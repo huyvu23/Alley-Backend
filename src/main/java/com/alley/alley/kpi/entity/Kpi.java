@@ -5,7 +5,7 @@ import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.UuidGenerator;
 
-import com.alley.alley.tasks.entity.Task;
+import com.alley.alley.task.entity.Task;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

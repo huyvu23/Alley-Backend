@@ -1,11 +1,12 @@
-package com.alley.alley.tasks.controller;
+package com.alley.alley.task.controller;
 
 import com.alley.alley.common.dtos.ApiResponse;
 import com.alley.alley.common.dtos.MetaResponse;
-import com.alley.alley.tasks.dto.TaskRequest;
-import com.alley.alley.tasks.dto.TaskResponse;
-import com.alley.alley.tasks.dto.TaskUpdateRequest;
-import com.alley.alley.tasks.service.TaskService;
+import com.alley.alley.task.dto.TaskRequest;
+import com.alley.alley.task.dto.TaskResponse;
+import com.alley.alley.task.dto.TaskUpdateRequest;
+import com.alley.alley.task.service.TaskService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,4 +1,4 @@
-package com.alley.alley.tasks.dto;
+package com.alley.alley.task.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

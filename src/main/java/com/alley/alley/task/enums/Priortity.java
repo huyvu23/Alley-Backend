@@ -1,4 +1,4 @@
-package com.alley.alley.tasks.enums;
+package com.alley.alley.task.enums;
 
 public enum Priortity {
     HIGH,

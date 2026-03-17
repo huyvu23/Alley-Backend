@@ -1,11 +1,11 @@
-package com.alley.alley.tasks.service;
+package com.alley.alley.task.service;
 
 import com.alley.alley.kpi.entity.Kpi;
-import com.alley.alley.tasks.dto.TaskRequest;
-import com.alley.alley.tasks.dto.TaskResponse;
-import com.alley.alley.tasks.dto.TaskUpdateRequest;
-import com.alley.alley.tasks.entity.Task;
-import com.alley.alley.tasks.repository.TaskRepository;
+import com.alley.alley.task.dto.TaskRequest;
+import com.alley.alley.task.dto.TaskResponse;
+import com.alley.alley.task.dto.TaskUpdateRequest;
+import com.alley.alley.task.entity.Task;
+import com.alley.alley.task.repository.TaskRepository;
 import com.alley.alley.user.entity.User;
 import com.alley.alley.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

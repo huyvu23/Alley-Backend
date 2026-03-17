@@ -1,12 +1,12 @@
-package com.alley.alley.tasks.entity;
+package com.alley.alley.task.entity;
 
 import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.UuidGenerator;
 
 import com.alley.alley.kpi.entity.Kpi;
-import com.alley.alley.tasks.enums.Priortity;
-import com.alley.alley.tasks.enums.Status;
+import com.alley.alley.task.enums.Priortity;
+import com.alley.alley.task.enums.Status;
 import com.alley.alley.user.entity.User;
 
 import jakarta.persistence.CascadeType;

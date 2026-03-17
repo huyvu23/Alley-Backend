@@ -1,11 +1,11 @@
-package com.alley.alley.tasks.service;
-
-import com.alley.alley.tasks.dto.TaskRequest;
-import com.alley.alley.tasks.dto.TaskResponse;
-import com.alley.alley.tasks.dto.TaskUpdateRequest;
+package com.alley.alley.task.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import com.alley.alley.task.dto.TaskRequest;
+import com.alley.alley.task.dto.TaskResponse;
+import com.alley.alley.task.dto.TaskUpdateRequest;
 
 public interface TaskService {
     TaskResponse createTask(TaskRequest request);
