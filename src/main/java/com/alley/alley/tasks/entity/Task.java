@@ -21,12 +21,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tasks")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task {
@@ -43,10 +45,12 @@ public class Task {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 50)
-    private Status status;
+    private Status status = Status.PENDING;
 
+    @Builder.Default
     @Column(name = "created_at", updatable = false)
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
@@ -56,14 +60,15 @@ public class Task {
     @Column(name = "due_date", nullable = true)
     private OffsetDateTime dueDate;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(name = "priority", nullable = false, length = 50)
-    private Priortity priority;
+    private Priortity priority = Priortity.MEDIUM;
 
     @Column(name = "completed_at", nullable = true)
     private OffsetDateTime completedAt;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "kpi_id", referencedColumnName = "id")
     private Kpi kpi;
 

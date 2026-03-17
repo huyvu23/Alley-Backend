@@ -1,7 +1,7 @@
 package com.alley.alley.tasks.enums;
 
 public enum Status {
-    TODO,
+    PENDING,
     IN_PROGRESS,
     DONE,
     CANCELLED
