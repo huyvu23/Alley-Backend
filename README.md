@@ -93,36 +93,23 @@ Run unit and integration tests using:
 
 ## 🌍 Production Deployment (Render.com)
 
-This project is configured for easy deployment on **Render** using **Docker**.
+This project uses **Infrastructure as Code** via a `render.yaml` Blueprint to fully automate deployment on **Render.com**.
 
-### 1. GitHub Setup
-- Push your latest code (including the `Dockerfile`) to your GitHub repository.
+### 1. Push to GitHub
+Ensure all your latest code, including `Dockerfile` and `render.yaml`, is committed and pushed to your Main/Master branch on GitHub.
 
-### 2. Render Web Service Setup
-1. Log in to [Render.com](https://render.com/).
-2. Click **New +** > **Web Service**.
-3. Connect your GitHub repository.
-4. **Runtime**: Select `Docker`.
-5. **Instance Type**: Select `Free`.
+### 2. Deploy via Render Blueprint
+1. Log in to [Render Dashboard](https://dashboard.render.com).
+2. Go to the **Blueprints** tab on the left menu.
+3. Click **New Blueprint Instance**.
+4. Connect your GitHub repository containing this project.
+5. Render will detect the `render.yaml` file and prompt you to enter the required securely synced environment variables (e.g., `DB_URL`, `REDIS_PASSWORD`).
+   - *Note: `JWT_SECRET_KEY` will be automatically generated as a secure random value by Render.*
+6. Click **Apply** to spin up the service. Any future pushes to GitHub will automatically trigger a new deployment.
 
-### 3. Environment Variables (Required)
-In the **Environment** tab on Render, add these variables to connect your services:
-
-| Key | Example Value (Supabase/Upstash) |
-| :--- | :--- |
-| `DB_URL` | `jdbc:postgresql://db.xxxx.supabase.co:5432/postgres` |
-| `DB_USERNAME` | `postgres` |
-| `DB_PASSWORD` | `your_db_password` |
-| `REDIS_HOST` | `your-redis-host.upstash.io` |
-| `REDIS_PORT` | `6379` |
-| `REDIS_PASSWORD` | `your_redis_password` |
-| `JWT_SECRET_KEY` | `your_long_random_secret_string` |
-| `CLOUDINARY_CLOUD_NAME` | `your_cloud_name` |
-| `CLOUDINARY_API_KEY` | `your_api_key` |
-| `CLOUDINARY_API_SECRET` | `your_api_secret` |
-
-### 4. How to keep it Always-On
-Since the Free Tier "sleeps" after 15 minutes of inactivity:
+### 3. Keep the Free Tier Awake (Optional)
+Since Free instances spin down after 15 minutes of inactivity:
 1. Go to [cron-job.org](https://cron-job.org/).
-2. Create a new Cronjob that pings your Scalar docs URL every 10-14 minutes:
-   `https://your-app-name.onrender.com/api/v1/alley/docs`
+2. Create a Free account.
+3. Set up a Cronjob that pings your API Documentation URL every 10-14 minutes:
+   `https://alley-backend.onrender.com/api/v1/alley/docs`

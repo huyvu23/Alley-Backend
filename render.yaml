@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: alley-backend
+    env: docker
+    plan: free # Use the free instance type
+    # Optional: Region can be set if you have a preference (e.g., oregon, frankfurt, ohio, singapore)
+    # region: singapore 
+    envVars:
+      - key: DB_URL
+        sync: false # Set to false so Render prompts you to enter it in the dashboard
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: REDIS_HOST
+        sync: false
+      - key: REDIS_PORT
+        value: "6379"
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true # Render will automatically generate a secure random string for you
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
