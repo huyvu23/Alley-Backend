@@ -5,6 +5,7 @@ import com.alley.alley.common.dtos.MetaResponse;
 import com.alley.alley.task.dto.TaskRequest;
 import com.alley.alley.task.dto.TaskResponse;
 import com.alley.alley.task.dto.TaskUpdateRequest;
+import com.alley.alley.task.enums.Status;
 import com.alley.alley.task.service.TaskService;
 
 import lombok.RequiredArgsConstructor;
@@ -43,10 +44,11 @@ public class TaskController {
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int pageSize,
             @RequestParam(defaultValue = "createdAt") String sortBy,
-            @RequestParam(defaultValue = "desc") String direction) {
+            @RequestParam(defaultValue = "desc") String direction,
+            @RequestParam(required = false) Status status) {
         Sort sort = direction.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
         Pageable pageable = PageRequest.of(page - 1, pageSize, sort);
-        Page<TaskResponse> taskPage = taskService.getAllTasks(pageable);
+        Page<TaskResponse> taskPage = taskService.getAllTasks(status, pageable);
 
         return ApiResponse.success(taskPage.getContent(), MetaResponse.fromPage(taskPage));
     }

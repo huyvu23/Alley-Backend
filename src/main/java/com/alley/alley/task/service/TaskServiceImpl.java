@@ -8,6 +8,7 @@ import com.alley.alley.task.entity.Task;
 import com.alley.alley.task.repository.TaskRepository;
 import com.alley.alley.user.entity.User;
 import com.alley.alley.user.repository.UserRepository;
+import com.alley.alley.task.enums.Status;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -98,7 +99,10 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<TaskResponse> getAllTasks(Pageable pageable) {
+    public Page<TaskResponse> getAllTasks(Status status, Pageable pageable) {
+        if (status != null) {
+            return taskRepository.findByStatus(status, pageable).map(this::mapToResponse);
+        }
         return taskRepository.findAll(pageable).map(this::mapToResponse);
     }
 

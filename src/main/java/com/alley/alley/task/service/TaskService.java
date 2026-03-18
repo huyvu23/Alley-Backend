@@ -1,5 +1,6 @@
 package com.alley.alley.task.service;
 
+import com.alley.alley.task.enums.Status;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,7 +15,7 @@ public interface TaskService {
 
     TaskResponse getTaskById(String id);
 
-    Page<TaskResponse> getAllTasks(Pageable pageable);
+    Page<TaskResponse> getAllTasks(Status status, Pageable pageable);
 
     void deleteTask(String id);
 }
