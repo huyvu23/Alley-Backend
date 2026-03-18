@@ -12,17 +12,6 @@ services:
         sync: false
       - key: DB_PASSWORD
         sync: false
-      - key: REDIS_HOST
-        sync: false
-      - key: REDIS_PORT
-        value: "6379"
-      - key: REDIS_PASSWORD
-        sync: false
       - key: JWT_SECRET_KEY
         generateValue: true # Render will automatically generate a secure random string for you
-      - key: CLOUDINARY_CLOUD_NAME
-        sync: false
-      - key: CLOUDINARY_API_KEY
-        sync: false
-      - key: CLOUDINARY_API_SECRET
-        sync: false
+
