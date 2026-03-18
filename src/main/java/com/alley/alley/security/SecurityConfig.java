@@ -29,8 +29,8 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // Allow public access to auth endpoints
-                        .requestMatchers("/auth/**").permitAll()
+                        // Allow public access to auth and API documentation
+                        .requestMatchers("/auth/**", "/v3/api-docs/**", "/docs/**").permitAll()
                         // All other requests must be authenticated
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session
