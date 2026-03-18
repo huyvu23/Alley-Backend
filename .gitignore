@@ -33,6 +33,6 @@ build/
 .vscode/
 
 ### Local Properties and Secrets ###
-src/main/resources/application.properties
+# src/main/resources/application.properties (Removed to allow deployment with environment variables)
 .env
 .DS_Store

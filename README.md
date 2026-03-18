@@ -88,3 +88,41 @@ Run unit and integration tests using:
 ```bash
 ./mvnw test
 ```
+
+---
+
+## 🌍 Production Deployment (Render.com)
+
+This project is configured for easy deployment on **Render** using **Docker**.
+
+### 1. GitHub Setup
+- Push your latest code (including the `Dockerfile`) to your GitHub repository.
+
+### 2. Render Web Service Setup
+1. Log in to [Render.com](https://render.com/).
+2. Click **New +** > **Web Service**.
+3. Connect your GitHub repository.
+4. **Runtime**: Select `Docker`.
+5. **Instance Type**: Select `Free`.
+
+### 3. Environment Variables (Required)
+In the **Environment** tab on Render, add these variables to connect your services:
+
+| Key | Example Value (Supabase/Upstash) |
+| :--- | :--- |
+| `DB_URL` | `jdbc:postgresql://db.xxxx.supabase.co:5432/postgres` |
+| `DB_USERNAME` | `postgres` |
+| `DB_PASSWORD` | `your_db_password` |
+| `REDIS_HOST` | `your-redis-host.upstash.io` |
+| `REDIS_PORT` | `6379` |
+| `REDIS_PASSWORD` | `your_redis_password` |
+| `JWT_SECRET_KEY` | `your_long_random_secret_string` |
+| `CLOUDINARY_CLOUD_NAME` | `your_cloud_name` |
+| `CLOUDINARY_API_KEY` | `your_api_key` |
+| `CLOUDINARY_API_SECRET` | `your_api_secret` |
+
+### 4. How to keep it Always-On
+Since the Free Tier "sleeps" after 15 minutes of inactivity:
+1. Go to [cron-job.org](https://cron-job.org/).
+2. Create a new Cronjob that pings your Scalar docs URL every 10-14 minutes:
+   `https://your-app-name.onrender.com/api/v1/alley/docs`
